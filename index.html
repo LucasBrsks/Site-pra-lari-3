@@ -1,13 +1,178 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+<meta charset="UTF-8">
+<title>SitePraLari</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url("https://wallpapers.com/images/featured/alien-stage-efvs60v61pnhtxyd.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .box {
+    background: rgba(20, 20, 20, 0.85);
+    padding: 35px;
+    border-radius: 20px;
+    text-align: center;
+    width: 320px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    animation: fadeIn 0.4s ease;
+  }
+
+  h2 {
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  p {
+    opacity: 0.9;
+  }
+
+  button {
+    margin: 8px;
+    padding: 12px 26px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  button:hover {
+    transform: scale(1.07);
+  }
+
+  .sim {
+    background: linear-gradient(135deg, #ff5fa2, #ff8ccf);
+    color: #fff;
+  }
+
+  .nao {
+    background: #444;
+    color: #ddd;
+  }
+
+  .sim:hover {
+    box-shadow: 0 0 15px #ff7bbf;
+  }
+
+  .nao:hover {
+    background: #666;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+</style>
 </head>
 <body>
-    <h1>coiso</h1>
-  <p>coisocoisocoisocoisocoisocoisocoisocoisocoisocoisocoisocoisocoisocoisocoisocoisocoisocoisocoisocoisocoisocoisocoiso</p>
-  <img src= "https://static.wikia.nocookie.net/disney/images/e/ed/I2_-_Frozone_2.png/revision/latest?cb=20180910193551&path-prefix=pt-br" alt="" width= "200px">
+
+<div class="box" id="principal">
+  <h2 id="frase"></h2>
+  <button onclick="responder(true)">Sim</button>
+  <button onclick="responder(false)">Não</button>
+</div>
+
+<div class="box" id="naoBox" style="display:none;">
+  <h2>Vai tomar no seu cu então Larissa🖕</h2>
+  <button onclick="reiniciar()">Se Deus quiser né</button>
+</div>
+
+<div class="box" id="fimBox" style="display:none;">
+  <h2>PRONTOOOO, AMOU??❤️</h2>
+  <button onclick="mostrarFinalSim()">SIIIMM, VOCÊ EH INCRÍVEEEL ❤️❤️</button>
+  <button onclick="mostrarNao()">Não, seu lixo 🖕</button>
+</div>
+<div class="box" id="finalSim" style="display:none;">
+  <h2>VOCÊ TB MINHA MAJESTADE💖</h2>
+  <p>Me deve uma casquinha agr, bjoooo 😘😘</p>
+  <button onclick="reiniciar()">Quero ir de novo</button>
+</div>
+
+<script>
+  const frases = [
+    "geudaewa hamkkein na",
+    "meolli jihaui byeollo uri",
+    "yeong-won eojjeomyeon",
+    "geu neomeokkaji",
+    "dangsin-gwa na, tto uri",
+    "geudaewa hamkkein na",
+    "biroso jihaui byeollo uri",
+    "yeong-won eojjeomyeon",
+    "geu neomeokkaji",
+    "dangsin-gwa na, tto uri",
+    "eoseureum naeryeowa uril gamssa aneumyeon",
+    "dangsin-gwa nae simjang heudeureojige utji",
+    "barameul tagoseo yeong-wonhi",
+    "yeong-wonhan goseuro",
+    "geudaewa hamkkeramyeon i sarang",
+    "eoseureum naeryeowa uril gamssa aneumyeon",
+    "dangsin-gwa nae simjang heudeureojige utji",
+    "barameul tagoseo yeong-wonhi",
+    "yeong-wonhan goseuro",
+    "geudaewa hamkkeramyeon i sarang",
+    "eoseureum naeryeowa uril gamssa aneumyeon",
+    "dangsin-gwa nae simjang heudeureojige utji",
+    "barameul tagoseo yeong-wonhi",
+    "yeong-wonhan goseuro",
+    "geudaewa hamkkeramyeon i sarang"
+  ];
+
+  let atual = 0;
+  const fraseEl = document.getElementById("frase");
+  const principal = document.getElementById("principal");
+  const naoBox = document.getElementById("naoBox");
+  const fimBox = document.getElementById("fimBox");
+
+  function mostrar() {
+    fraseEl.innerText = frases[atual];
+  }
+
+  function responder(sim) {
+    if (!sim) {
+      principal.style.display = "none";
+      naoBox.style.display = "block";
+      return;
+    }
+
+    atual++;
+    if (atual < frases.length) {
+      mostrar();
+    } else {
+      principal.style.display = "none";
+      fimBox.style.display = "block";
+    }
+  }
+    function mostrarNao() {
+    principal.style.display = "none";
+    fimBox.style.display = "none";
+    naoBox.style.display = "block";
+  }
+  function mostrarFinalSim() {
+    fimBox.style.display = "none";
+    finalSim.style.display = "block";
+  }
+
+    function reiniciar() {
+    atual = 0;
+    naoBox.style.display = "none";
+    fimBox.style.display = "none";
+    finalSim.style.display = "none";
+    principal.style.display = "block";
+    mostrar();
+  }
+
+  mostrar();
+</script>
+
 </body>
 </html>
